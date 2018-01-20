@@ -3,6 +3,8 @@ general:
 
 dependencies:
   post:
+    - sudo pip install --upgrade pip
+    - sudo pip install --upgrade setuptools
     - sudo pip install ansible
 
 machine:
@@ -11,8 +13,8 @@ machine:
 
 test:
   pre:
-    - sudo ln -s orientdb-role ../../migibert.orientdb        
-  override:    
+    - sudo ln -s orientdb-role ../../migibert.orientdb
+  override:
     - ansible-playbook --syntax-check -i inventory $PLAYBOOK
     - ansible-playbook --list-tasks -i inventory $PLAYBOOK
     - sudo ansible-playbook --connection=local -i inventory $PLAYBOOK
